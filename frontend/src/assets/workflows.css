@@ -1,0 +1,1126 @@
+/* ===================== Workflows List Page ===================== */
+
+.workflows-page {
+    padding: 24px 28px;
+}
+
+.wf-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.wf-top-row-end {
+    justify-content: flex-end;
+}
+
+.wf-breadcrumb {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.wf-breadcrumb-sep {
+    margin: 0 6px;
+    color: #ccc;
+}
+
+.wf-breadcrumb-current {
+    color: #9e1f3d;
+}
+
+.wf-new-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.wf-new-btn:hover {
+    background: #7d1830;
+    transform: translateY(-1px);
+}
+
+.wf-back-link {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9e1f3d;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+.wf-back-link:hover {
+    text-decoration: underline;
+}
+
+.wf-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+}
+
+.wf-module-dropdown {
+    position: relative;
+}
+
+.wf-module-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    min-width: 220px;
+}
+
+.wf-module-dropdown-btn:hover {
+    border-color: #9e1f3d;
+}
+
+.wf-module-count-badge {
+    background: #3fa563;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 12px;
+}
+
+.wf-caret {
+    margin-left: auto;
+    font-size: 12px;
+    color: #999;
+    transition: transform 0.2s;
+}
+
+.wf-caret.open {
+    transform: rotate(180deg);
+}
+
+.wf-module-panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 320px;
+    background: #fff;
+    border: 1px solid #d8e8f5;
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    padding: 10px;
+}
+
+.wf-module-search {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.wf-module-search input {
+    width: 100%;
+    padding: 8px 32px 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.wf-module-search svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 13px;
+}
+
+.wf-module-list {
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.wf-module-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.wf-module-item:hover {
+    background: #fce8ee;
+}
+
+.wf-module-item.active {
+    background: #9e1f3d;
+    color: #fff;
+}
+
+.wf-module-item-count {
+    font-size: 13px;
+    color: inherit;
+    opacity: 0.75;
+}
+
+.wf-module-item-empty {
+    padding: 12px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.wf-search-by-name {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+}
+
+.wf-search-by-name input {
+    width: 100%;
+    padding: 9px 12px 9px 34px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.wf-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 13px;
+}
+
+.wf-pagination-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #444;
+    margin-left: auto;
+}
+
+.wf-icon-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    cursor: pointer;
+}
+
+.wf-icon-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.wf-icon-btn-active {
+    background: #9e1f3d;
+    color: #fff;
+}
+
+.wf-table-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+.wf-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+}
+
+.wf-table thead th {
+    text-align: left;
+    padding: 12px 16px;
+    color: #666;
+    font-weight: 700;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.wf-row {
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.wf-row:hover {
+    background: #fdf6f8;
+}
+
+.wf-table td {
+    padding: 14px 16px;
+    vertical-align: top;
+    color: #333;
+}
+
+.wf-col-toggle {
+    width: 90px;
+}
+
+.wf-toggle-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wf-status-toggle {
+    border: none;
+    border-radius: 14px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    min-width: 44px;
+}
+
+.wf-status-toggle.on {
+    background: #3fa563;
+    color: #fff;
+}
+
+.wf-status-toggle.off {
+    background: #e6e6e6;
+    color: #777;
+}
+
+.wf-delete-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #999;
+}
+
+.wf-delete-icon:hover {
+    color: #9e1f3d;
+}
+
+.wf-col-module {
+    width: 60px;
+}
+
+.wf-module-icon {
+    color: #9e1f3d;
+    font-size: 18px;
+    background: #fce8ee;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wf-col-name {
+    font-weight: 600;
+    color: #333;
+    min-width: 220px;
+}
+
+.wf-col-trigger {
+    color: #555;
+    min-width: 160px;
+}
+
+.wf-col-conditions {
+    min-width: 240px;
+    color: #2196f3;
+    font-size: 13px;
+}
+
+.wf-col-conditions div {
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.wf-col-conditions strong {
+    color: #222;
+}
+
+.wf-col-actions {
+    min-width: 180px;
+    color: #2196f3;
+    font-size: 13px;
+}
+
+.wf-col-actions span {
+    display: block;
+}
+
+.wf-no-results {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+.wf-footer {
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    padding: 18px 0;
+}
+
+.wf-not-found {
+    text-align: center;
+    padding: 60px;
+}
+
+.wf-editor-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.wf-editor-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 22px 26px;
+    margin-bottom: 20px;
+}
+
+.wf-editor-section-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 16px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.wf-editor-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    row-gap: 18px;
+    column-gap: 20px;
+    align-items: start;
+}
+
+.wf-editor-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    padding-top: 9px;
+}
+
+.wf-required {
+    color: #e53935;
+    margin-left: 2px;
+}
+
+.wf-editor-input,
+.wf-editor-textarea,
+.wf-editor-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.wf-editor-textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.wf-select-wrapper {
+    position: relative;
+}
+
+.wf-select-wrapper select {
+    appearance: none;
+}
+
+.wf-select-caret {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.wf-radio-row {
+    display: flex;
+    gap: 24px;
+    padding-top: 8px;
+}
+
+.wf-radio-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 8px;
+}
+
+.wf-radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.wf-radio-option input[type="radio"] {
+    accent-color: #9e1f3d;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.wf-legacy-banner {
+    background: #eaf5fc;
+    border: 1px solid #cbe6f5;
+    color: #2b6f93;
+    font-size: 14px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+.wf-legacy-choice {
+    margin-top: 16px;
+}
+
+.wf-condition-box {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.wf-condition-block {
+    margin-bottom: 24px;
+}
+
+.wf-condition-block:last-child {
+    margin-bottom: 0;
+}
+
+.wf-condition-block-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.wf-condition-hint {
+    font-weight: 400;
+    color: #888;
+    font-size: 13px;
+}
+
+.wf-condition-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fce8ee;
+    color: #9e1f3d;
+    padding: 6px 10px;
+    border-radius: 16px;
+    font-size: 13px;
+    margin: 0 8px 8px 0;
+}
+
+.wf-condition-tag button {
+    background: none;
+    border: none;
+    color: #9e1f3d;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.wf-condition-add-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.wf-condition-add-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+}
+
+.wf-add-condition-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.wf-add-condition-btn:hover {
+    background: #7d1830;
+}
+
+.wf-action-menu-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.wf-add-action-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wf-add-action-btn:hover {
+    background: #7d1830;
+}
+
+.wf-action-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    z-index: 100;
+    min-width: 220px;
+}
+
+.wf-action-menu-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.wf-action-menu-item:hover {
+    background: #fce8ee;
+    color: #9e1f3d;
+}
+
+.wf-actions-table-wrap {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.wf-actions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.wf-actions-table thead th {
+    text-align: left;
+    padding: 10px 14px;
+    background: #fafafa;
+    color: #555;
+    font-weight: 700;
+    border-bottom: 1px solid #eee;
+}
+
+.wf-actions-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.wf-action-active-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.wf-action-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    font-size: 13px;
+}
+
+.wf-action-remove:hover {
+    color: #9e1f3d;
+}
+
+.wf-action-title-link {
+    color: #2196f3;
+}
+
+.wf-no-actions {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 14px;
+}
+
+.wf-editor-footer-bar {
+    position: sticky;
+    bottom: 0;
+    background: #f2f2f2;
+    border-top: 1px solid #ddd;
+    padding: 14px 26px;
+    display: flex;
+    gap: 12px;
+    border-radius: 0 0 10px 10px;
+}
+
+.wf-save-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.wf-save-btn:hover {
+    background: #7d1830;
+}
+
+.wf-cancel-btn {
+    background: #fff;
+    color: #9e1f3d;
+    border: 1px solid #9e1f3d;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.wf-cancel-btn:hover {
+    background: #fce8ee;
+}
+
+/* ===================== Add Action Modal (append to workflows.css) ===================== */
+
+.wf-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.wf-modal-box {
+    background: #fff;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wf-modal-header {
+    background: #9e1f3d;
+    color: #fff;
+    padding: 18px 28px;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.wf-modal-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.wf-modal-body {
+    padding: 28px;
+    flex: 1;
+    max-width: 900px;
+}
+
+.wf-modal-footer {
+    background: #f2f2f2;
+    border-top: 1px solid #ddd;
+    padding: 14px 28px;
+    display: flex;
+    gap: 12px;
+    position: sticky;
+    bottom: 0;
+}
+
+.wf-modal-row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 16px;
+}
+
+.wf-modal-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #444;
+    padding-top: 8px;
+}
+
+.wf-modal-field {
+    min-width: 0;
+}
+
+.wf-modal-field-split {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.wf-modal-field-split .wf-modal-input,
+.wf-modal-field-split .wf-searchable-select {
+    flex: 1;
+}
+
+.wf-modal-input,
+.wf-modal-select,
+.wf-modal-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.wf-modal-select-inline {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+    background: #fff;
+    max-width: 180px;
+}
+
+.wf-modal-textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+
+.wf-modal-textarea-large {
+    min-height: 160px;
+}
+
+.wf-input-narrow {
+    max-width: 70px;
+}
+
+.wf-cc-bcc-link {
+    color: #2196f3;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.wf-cc-bcc-link:hover {
+    text-decoration: underline;
+}
+
+.wf-info-banner {
+    background: #eaf5fc;
+    border: 1px solid #cbe6f5;
+    color: #2b6f93;
+    font-size: 13.5px;
+    padding: 10px 14px;
+    border-radius: 6px;
+}
+
+.wf-time-icon-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.wf-due-date-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+    color: #444;
+}
+
+.wf-due-date-hint {
+    color: #888;
+    font-size: 12px;
+}
+
+.wf-add-field-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.wf-add-field-btn:hover {
+    background: #7d1830;
+}
+
+/* ---- Searchable select (Create Record "Create a record in") ---- */
+.wf-searchable-select {
+    position: relative;
+}
+
+.wf-searchable-select-btn {
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid #9e1f3d;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 13.5px;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wf-caret-mini {
+    font-size: 10px;
+    color: #999;
+}
+
+.wf-searchable-select-panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    min-width: 260px;
+    background: #fff;
+    border: 1px solid #9e1f3d;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+    z-index: 50;
+    padding: 8px;
+}
+
+.wf-searchable-select-search {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.wf-searchable-select-search input {
+    width: 100%;
+    padding: 7px 30px 7px 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.wf-searchable-select-search svg {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 12px;
+}
+
+.wf-searchable-select-list {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.wf-searchable-select-item {
+    padding: 7px 10px;
+    font-size: 13.5px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.wf-searchable-select-item:hover {
+    background: #fce8ee;
+}
+
+.wf-searchable-select-item.active {
+    background: #2b6fd0;
+    color: #fff;
+}
+
+.wf-searchable-select-empty {
+    padding: 10px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}
+
+/* ===================== Sliding Toggle Switch ===================== */
+/* ON -> knob slides LEFT. OFF -> knob slides RIGHT. */
+
+.wf-toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 60px;
+    height: 26px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    overflow: hidden;
+    transition: background 0.2s ease;
+}
+
+.wf-toggle-switch.on {
+    background: #3fa563;
+}
+
+.wf-toggle-switch.off {
+    background: #e0e0e0;
+}
+
+.wf-toggle-switch-label {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    z-index: 1;
+}
+
+.wf-toggle-switch.on .wf-toggle-switch-label {
+    color: #fff;
+    padding-left: 18px;
+}
+
+.wf-toggle-switch.off .wf-toggle-switch-label {
+    color: #777;
+    padding-right: 18px;
+}
+
+.wf-toggle-switch-knob {
+    position: absolute;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: left 0.2s ease;
+}
+
+/* ON: knob on the left */
+.wf-toggle-switch.on .wf-toggle-switch-knob {
+    left: 3px;
+}
+
+/* OFF: knob on the right */
+.wf-toggle-switch.off .wf-toggle-switch-knob {
+    left: 37px;
+}
+
+/* ===================== Horizontal Condition Row (Field / Operator / Value / Delete) ===================== */
+
+.wf-condition-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.wf-condition-select {
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+    background: #fff;
+    min-width: 200px;
+    flex: 1 1 200px;
+}
+
+.wf-condition-value-input {
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+    flex: 1.5 1 220px;
+}
+
+.wf-condition-delete-btn {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.wf-condition-delete-btn:hover {
+    color: #9e1f3d;
+}

@@ -1,0 +1,285 @@
+/* ComplaintTaskDetail.jsx styles
+   Brand tokens reused from the rest of the app: maroon #9E1B32, cream/amber
+   accents. Scoped under .task-detail-page so nothing leaks into other pages. */
+
+.task-detail-page {
+    --maroon: #9e1b32;
+    --maroon-dark: #7a1526;
+    --blue-accent: #2159a6;
+    --cream: #f7f2e7;
+    --border: #e7e0d2;
+    --text-muted: #8a8378;
+
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 20px 24px 40px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #2b2b2b;
+}
+
+/* Breadcrumb */
+.task-detail-breadcrumb {
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--maroon);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.task-detail-breadcrumb span {
+    cursor: pointer;
+}
+.task-detail-breadcrumb .crumb-sep {
+    margin: 0 6px;
+    color: var(--text-muted);
+    cursor: default;
+}
+.task-detail-breadcrumb .crumb-current {
+    color: #2b2b2b;
+    text-transform: none;
+    cursor: default;
+}
+
+/* Top bar: thumbnail + title + action buttons */
+.task-detail-topbar {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+}
+
+.task-detail-thumb {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: var(--cream);
+    color: var(--maroon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.task-detail-titleblock {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.task-detail-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 4px 0 10px;
+    color: #262626;
+}
+
+.add-tag-btn {
+    border: 1px dashed var(--border);
+    background: #fafafa;
+    color: var(--text-muted);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.add-tag-btn:hover {
+    border-color: var(--maroon);
+    color: var(--maroon);
+}
+
+.task-detail-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.detail-btn {
+    border: 1px solid var(--maroon);
+    background: #fff;
+    color: var(--maroon);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.detail-btn--primary {
+    background: var(--maroon);
+    color: #fff;
+}
+.detail-btn--primary:hover {
+    background: var(--maroon-dark);
+}
+.detail-btn:not(.detail-btn--primary):hover {
+    background: var(--cream);
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+}
+.nav-arrows button {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #f4ede0;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-arrows .nav-arrow--primary {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: #fff;
+}
+.nav-arrows button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Tabs */
+.task-detail-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 6px;
+    margin-bottom: 16px;
+}
+
+.detail-tab {
+    border: none;
+    background: transparent;
+    color: #6b5f4e;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.detail-tab.active {
+    background: var(--maroon);
+    color: #fff;
+}
+.detail-tab--icon {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+.detail-tab--text {
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Section banners */
+.detail-section-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 9px 16px;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(90deg, var(--maroon) 0%, var(--blue-accent) 100%);
+    margin-top: 18px;
+}
+.detail-section-caret {
+    font-size: 11px;
+}
+
+/* Field grid */
+.detail-field-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--border);
+    gap: 1px;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+}
+
+.detail-field {
+    background: #fafaf8;
+    padding: 10px 16px;
+    min-height: 46px;
+}
+.detail-field--full {
+    grid-column: 1 / -1;
+}
+
+.detail-field-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+}
+
+.detail-field-value {
+    font-size: 13.5px;
+    color: #2b2b2b;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.detail-field-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--blue-accent);
+    cursor: pointer;
+    text-decoration: none;
+}
+.detail-field-link:hover {
+    text-decoration: underline;
+}
+
+/* Updates placeholder */
+.task-detail-empty {
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+}
+
+/* Footer */
+.task-footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+    .detail-field-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .task-detail-topbar {
+        flex-wrap: wrap;
+    }
+    .task-detail-actions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .detail-field-grid {
+        grid-template-columns: 1fr;
+    }
+}

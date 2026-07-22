@@ -1,0 +1,133 @@
+/* ===== Account Detail — extends complaint-detail.css ===== */
+
+.account-header {
+    align-items: flex-start;
+}
+.account-icon-box {
+    background: #f7ded9;
+    color: #c9564a;
+}
+.account-contact-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 4px;
+}
+.account-contact-line a {
+    color: #0056b3;
+    text-decoration: none;
+}
+.account-contact-line a:hover {
+    text-decoration: underline;
+}
+.account-contact-icon {
+    font-size: 12px;
+    color: #9E1B32;
+    flex-shrink: 0;
+}
+
+.account-mis-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.mis-badge {
+    background: #2196f3;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 18px;
+    text-align: center;
+    min-width: 130px;
+}
+.mis-badge-label {
+    font-size: 11.5px;
+    opacity: 0.9;
+}
+.mis-badge-value {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.account-outline-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 4px auto 20px;
+    width: fit-content;
+}
+.outline-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid #2196f3;
+    color: #2196f3;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+.outline-btn:hover {
+    background: #eaf4fe;
+}
+
+.account-summary-grid {
+    grid-template-columns: 1.3fr 1fr 0.9fr;
+}
+
+.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+.doc-table th {
+    text-align: left;
+    color: #8a8a8a;
+    font-weight: 600;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.doc-table td {
+    padding: 10px 0;
+    color: #0056b3;
+    border-bottom: 1px solid #f6f6f6;
+    vertical-align: top;
+}
+.doc-icons {
+    display: flex;
+    gap: 10px;
+    color: #999;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+/* Updates tab — field change entries */
+.account-update-row {
+    grid-template-columns: 110px 30px 1fr;
+}
+.field-change {
+    margin-top: 8px;
+    padding-left: 2px;
+}
+.field-change-name {
+    color: #0056b3;
+    font-weight: 600;
+    font-size: 13px;
+    margin-right: 6px;
+}
+.field-change-label {
+    color: #555;
+    font-size: 13px;
+}
+.field-change-line {
+    font-size: 13px;
+    color: #666;
+    margin-top: 2px;
+}
+.field-change-val {
+    color: #333;
+    font-style: italic;
+}

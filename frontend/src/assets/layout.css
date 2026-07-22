@@ -1,0 +1,8 @@
+.layout-container {
+    min-height: 100vh;
+    background: #f0ece3;  /* was #f8e8c4 — this was the yellow strip */
+}
+
+.main-content {
+    padding: 0;  /* was 30px — this was pushing content down and exposing the yellow */
+}

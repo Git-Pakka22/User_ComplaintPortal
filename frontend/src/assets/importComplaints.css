@@ -1,0 +1,212 @@
+.import-page {
+    padding: 16px 20px 90px 20px;
+    background: #ffffff;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.breadcrumb-row {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.breadcrumb-row span {
+    margin: 0 4px;
+    color: #999;
+}
+
+/* Banner */
+.import-banner {
+    background: #9e1f3d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+}
+
+.import-close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Stepper */
+.import-stepper {
+    display: flex;
+    border: 1px solid #eee;
+    border-top: none;
+}
+
+.stepper-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    background: #f1f1f1;
+    color: #777;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    clip-path: polygon(0 0, 94% 0, 100% 50%, 94% 100%, 0 100%, 6% 50%);
+}
+
+.stepper-item:first-child {
+    clip-path: polygon(0 0, 94% 0, 100% 50%, 94% 100%, 0 100%);
+}
+
+.stepper-item .stepper-number {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2255cc;
+}
+
+.stepper-item.active {
+    background: #5b2d91;
+    color: #fff;
+}
+
+.stepper-item.active .stepper-number {
+    color: #fff;
+}
+
+.stepper-item.completed {
+    background: #e3e3e3;
+    color: #555;
+}
+
+/* Body */
+.import-body {
+    border: 1px solid #eee;
+    border-top: none;
+    padding: 24px;
+    min-height: 350px;
+}
+
+.import-section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin: 0 0 8px 0;
+}
+
+.import-section hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin-bottom: 24px;
+}
+
+.import-field-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.import-field-row label:first-child {
+    width: 220px;
+    font-size: 14px;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.import-field-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-select-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-select-btn:hover {
+    background: #7d1830;
+}
+
+.file-name {
+    font-size: 13px;
+    color: #555;
+}
+
+.import-field-control select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 14px;
+    min-width: 160px;
+}
+
+.radio-group {
+    gap: 24px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.placeholder-text {
+    color: #777;
+    font-size: 14px;
+}
+
+/* Actions */
+.import-actions-bar {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: #f0f0f0;
+    border-top: 1px solid #ddd;
+    padding: 12px 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-next,
+.btn-cancel {
+    border: none;
+    border-radius: 5px;
+    padding: 9px 22px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-next {
+    background: #9e1f3d;
+    color: #fff;
+}
+
+.btn-next:hover {
+    background: #7d1830;
+}
+
+.btn-cancel {
+    background: #fff;
+    color: #9e1f3d;
+    border: 1px solid #9e1f3d;
+}

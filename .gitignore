@@ -1,0 +1,9 @@
+node_modules/
+frontend/dist/
+frontend/.env
+backend/vendor/
+backend/.env
+backend/storage/*.key
+backend/bootstrap/cache/*
+.DS_Store
+*.log

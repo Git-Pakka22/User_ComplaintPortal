@@ -1,0 +1,270 @@
+/* ===================== Add Action Modal (append to workflows.css) ===================== */
+
+.wf-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.wf-modal-box {
+    background: #fff;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wf-modal-header {
+    background: #9e1f3d;
+    color: #fff;
+    padding: 18px 28px;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.wf-modal-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.wf-modal-body {
+    padding: 28px;
+    flex: 1;
+    max-width: 900px;
+}
+
+.wf-modal-footer {
+    background: #f2f2f2;
+    border-top: 1px solid #ddd;
+    padding: 14px 28px;
+    display: flex;
+    gap: 12px;
+    position: sticky;
+    bottom: 0;
+}
+
+.wf-modal-row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 16px;
+}
+
+.wf-modal-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #444;
+    padding-top: 8px;
+}
+
+.wf-modal-field {
+    min-width: 0;
+}
+
+.wf-modal-field-split {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.wf-modal-field-split .wf-modal-input,
+.wf-modal-field-split .wf-searchable-select {
+    flex: 1;
+}
+
+.wf-modal-input,
+.wf-modal-select,
+.wf-modal-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.wf-modal-select-inline {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13.5px;
+    background: #fff;
+    max-width: 180px;
+}
+
+.wf-modal-textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+
+.wf-modal-textarea-large {
+    min-height: 160px;
+}
+
+.wf-input-narrow {
+    max-width: 70px;
+}
+
+.wf-cc-bcc-link {
+    color: #2196f3;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.wf-cc-bcc-link:hover {
+    text-decoration: underline;
+}
+
+.wf-info-banner {
+    background: #eaf5fc;
+    border: 1px solid #cbe6f5;
+    color: #2b6f93;
+    font-size: 13.5px;
+    padding: 10px 14px;
+    border-radius: 6px;
+}
+
+.wf-time-icon-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.wf-due-date-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+    color: #444;
+}
+
+.wf-due-date-hint {
+    color: #888;
+    font-size: 12px;
+}
+
+.wf-add-field-btn {
+    background: #9e1f3d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.wf-add-field-btn:hover {
+    background: #7d1830;
+}
+
+/* ---- Searchable select (Create Record "Create a record in") ---- */
+.wf-searchable-select {
+    position: relative;
+}
+
+.wf-searchable-select-btn {
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid #9e1f3d;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 13.5px;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wf-caret-mini {
+    font-size: 10px;
+    color: #999;
+}
+
+.wf-searchable-select-panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    min-width: 260px;
+    background: #fff;
+    border: 1px solid #9e1f3d;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+    z-index: 50;
+    padding: 8px;
+}
+
+.wf-searchable-select-search {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.wf-searchable-select-search input {
+    width: 100%;
+    padding: 7px 30px 7px 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.wf-searchable-select-search svg {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 12px;
+}
+
+.wf-searchable-select-list {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.wf-searchable-select-item {
+    padding: 7px 10px;
+    font-size: 13.5px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.wf-searchable-select-item:hover {
+    background: #fce8ee;
+}
+
+.wf-searchable-select-item.active {
+    background: #2b6fd0;
+    color: #fff;
+}
+
+.wf-searchable-select-empty {
+    padding: 10px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}

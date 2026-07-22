@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.dashboard-page {
+    --brand: #9e1b32;
+    --brand-dark: #7c1230;
+    --brand-tint: #fbeaf0;
+    
+    /* Chart Theme Color Palette variables */
+    --chart-header-bg: #eae7e7e9; /* Warm cream, matches invoice-table reference */
+    --chart-header-text: #2e2622;
+    --chart-grid-line: #d4c1c1;
+    --chart-row-hover: #fdfaf8;
+    
+    --ink: #1c2230;
+    --muted: #556075;
+    --border: #d4c1c1;
+    --bg-page: #f0f3f5; /* High contrast off-white background tint */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-page);
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+    color: var(--ink);
+    font-size: 13.5px;
+}
+/* Explicit Width Rules for Columns (now driven by colgroup) */
+.col-no       { width: 155px; }
+.col-time     { width: 170px; }
+.col-name     { width: 260px; }
+.col-type     { width: 240px; }
+.col-assigned { width: 180px; }
+.col-related  { width: 160px; }
+.col-customer { width: 250px; }
+
+/* Header cells: keep text from spilling into next column even if too long */
+.complaint-table th {
+    background: var(--chart-header-bg);
+    color: var(--chart-header-text);
+    font-weight: 700;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    white-space: normal;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.dashboard-page * { box-sizing: border-box; }
+
+/* ---------- Stat cards ---------- */
+.stat-cards-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 26px;
+}
+.stat-card {
+    display: flex; align-items: center; gap: 14px;
+    background: #fff;
+    border: 1px solid #e2e4ea;
+    border-left: 5px solid var(--brand);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+.stat-card-icon {
+    width: 46px; height: 46px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+}
+.stat-card-value { font-size: 26px; font-weight: 800; line-height: 1.1; }
+.stat-card-label { font-size: 12px; color: var(--muted); font-weight: 600; margin-top: 3px; }
+
+/* ---------- Attractive Redesigned Button ---------- */
+.above-table-row { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+
+.btn-add-complaint {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    background: linear-gradient(135deg, #9e1b32 0%, #7c1230 100%); /* brand maroon/brown */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(158, 27, 50, 0.35);
+    transition: all 0.25s ease;
+}
+.btn-add-complaint:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(158, 27, 50, 0.45);
+    background: linear-gradient(135deg, #7c1230 0%, #5e0e24 100%);
+}
+.btn-add-complaint:active {
+    transform: translateY(0);
+}
+.btn-icon {
+    font-size: 12px;
+}
+
+/* ---------- Slim Top Bar: search (left) + pagination (right) ---------- */
+/* Box 1: Toolbar + Filters (search, entries, dates, action buttons) */
+.filters-outer-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px; /* creates the visual gap between the two boxes */
+}
+
+/* Box 2: The table itself */
+.table-outer-card {
+    background: #fff; 
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+
+}
+.grid-toolbar {
+    display: flex; align-items: center; justify-content: flex-end;
+    background: #fff;; /* Rich dark layout contrasting the grid header */
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    gap: 16px;
+}
+.toolbar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.pagination-text { font-size: 13px; color: var(--ink); font-weight: 500; margin-right: 6px; white-space: nowrap; }
+
+/* Filters bar: entries-per-page, search, customer filter, date range, actions */
+.table-filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: none; /* changed from 1px solid var(--border) — this is now the last element in its own card */
+}
+
+.filter-entries {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+}
+.filter-entries select {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    color: var(--ink);
+}
+
+.filter-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 200px;
+}
+.filter-search-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 12px;
+    color: #9a9aa5;
+    pointer-events: none;
+}
+.filter-search input {
+    width: 100%;
+    padding: 9px 14px 9px 32px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    color: var(--ink);
+}
+.filter-search input::placeholder { color: #9a9aa5; }
+
+.filter-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 190px;
+}
+.filter-customer-select {
+    width: 100%;
+    padding: 9px 32px 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    color: var(--ink);
+    font-weight: 600;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.filter-select-caret {
+    position: absolute;
+    right: 12px;
+    font-size: 10px;
+    color: var(--muted);
+    pointer-events: none;
+}
+
+.filter-date {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 150px;
+}
+.filter-date-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 12px;
+    color: #9a9aa5;
+    pointer-events: none;
+}
+.filter-date input[type="date"] {
+    width: 100%;
+    padding: 9px 12px 9px 32px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    color: var(--ink);
+}
+
+.filter-search input:focus,
+.filter-customer-select:focus,
+.filter-date input:focus,
+.filter-entries select:focus {
+    outline: none;
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+}
+
+.filter-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+.filter-action-btn:hover {
+    background: #faf6f6;
+    border-color: #c0392b;
+    color: #9e1b32;
+}
+
+.icon-btn {
+    width: 30px; height: 30px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 6px; border: none; cursor: pointer;
+    font-size: 12px; transition: all 0.2s ease;
+}
+.pager-disabled { background: #4a4a5a; color: #999; cursor: not-allowed; }
+.pager-active { background: #c0392b; color: #fff; }
+.pager-active:hover { background: #a93226; }
+.pager-options { background: #7b241c; color: #fff; }
+.icon-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+
+/* ---------- The Anti-Overlap Table Grid Grid Layout System ---------- */
+.responsive-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+.complaint-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    table-layout: fixed; /* Crucial: Enforces hard width restrictions */
+}
+
+/* Explicit Width Rules for Columns to Prevent Value Crowding */
+.col-no       { width: 155px; }
+.col-time     { width: 160px; }
+.col-name     { width: 260px; } /* Large allocation for Complaint description */
+.col-type     { width: 240px; }
+.col-assigned { width: 180px; }
+.col-related  { width: 160px; }
+.col-customer { width: 250px; }
+
+/* Structural Styling Rules */
+.complaint-table th, .complaint-table td {
+    padding: 18px 20px;
+    text-align: left;
+    border-bottom: 1px solid #efe9e9; /* Light hairline only — no vertical grid lines */
+    vertical-align: middle; /* Prevents text alignment breakage when cell contents wrap */
+}
+.complaint-table th {
+    background: var(--chart-header-bg);
+    color: var(--chart-header-text);
+    font-weight: 700;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 14px 20px;
+    border-bottom: 2px solid #e4ddd2;
+}
+.complaint-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.page-nav-btn {
+    background: none;
+    border: none;
+    color: #9E1B32;
+    font-weight: 500;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.page-nav-btn:hover:not(:disabled) {
+    background: #f5e6e9;
+}
+
+.page-nav-btn:disabled {
+    color: #bbb;
+    cursor: not-allowed;
+}
+
+.page-number {
+    background: none;
+    border: none;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.page-number:hover {
+    background: #f5e6e9;
+}
+
+.page-number-active {
+    background: #9E1B32;
+    color: #fff;
+}
+
+.page-dots {
+    color: #999;
+    padding: 0 4px;
+}
+
+/* Absolute Wrap Enforcement System */
+.text-wrap-cell {
+    white-space: normal !important;      /* Overrides standard nowrap blocking cells */
+    word-wrap: break-word !important;    /* Safely manages overflow text constraints */
+    overflow-wrap: break-word !important;
+    line-height: 1.4;
+}
+
+/* No-results state for the global search */
+.no-results-cell {
+    text-align: center !important;
+    padding: 28px 12px !important;
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* Row Hover Interaction Framework */
+.complaint-table tbody tr:hover td { 
+    background-color: #fdf6ee; 
+}
+
+/* Dynamic Interactive UI Elements */
+.link-btn {
+    background: none; border: none; padding: 0; cursor: pointer;
+    font: inherit; font-weight: 600; color: #2980b9; text-decoration: underline;
+}
+.complaint-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #9e1b32 0%, #7c1230 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+.complaint-badge:hover {
+    background: linear-gradient(135deg, #7c1230 0%, #5e0e24 100%);
+    transform: translateY(-1px);
+}
+.complaint-badge:active {
+    transform: translateY(0);
+}
+.highlighted-link {
+    color: #2980b9;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.highlighted-link:hover, .link-btn:hover {
+    color: #1f618d;
+}
+.table-pagination-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
+}
+.table-pagination-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+
+/* ---------- Responsive Screen Adapters ---------- */
+@media (max-width: 1200px) { .stat-cards-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 768px) { .stat-cards-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- Print PDF: only the table data prints, nothing else ---------- */
+@media print {
+    .no-print { display: none !important; }
+    .dashboard-page { padding: 0; background: #fff; }
+    .table-outer-card { border: none; box-shadow: none; }
+    .complaint-table th { background: #f0f0f0 !important; }
+}

@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =====================================================================
+   "Order Form" theme — matches the Tableware Order Form reference:
+   light gray page backdrop, separate white rounded cards per section,
+   a warm amber top-accent bar on each card, boxed (bordered) inputs
+   instead of underlines, and a sticky bottom action bar with pill
+   Cancel / Save buttons. Existing JSX structure works unchanged.
+   ===================================================================== */
+
+.new-complaint-page {
+    --ink: #1c2a3a;
+    --muted: #6b7280;
+    --accent: #e2a03f;       /* warm amber — the card top-border colour */
+    --accent-dark: #c98a2c;
+    --accent-soft: #fdf3e2;
+    --line: #d9dee4;
+    --danger: #d0342c;
+    --danger-soft: #fbeceb;
+    --card-bg: #ffffff;
+    --page-bg: #f3f5f7;
+
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--page-bg);
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: var(--ink);
+    padding: 24px 32px 40px;
+}
+
+.new-complaint-page * { box-sizing: border-box; }
+
+/* ===================== Breadcrumb ===================== */
+.breadcrumb-row {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 14px;
+}
+.breadcrumb-row span { margin: 0 6px; color: #b8bfc7; }
+.breadcrumb-row strong { color: var(--ink); text-transform: none; font-weight: 700; }
+
+/* ===================== Header row: back button + title ===================== */
+.page-header-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(20, 20, 30, 0.08);
+    flex-shrink: 0;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+.back-btn:hover { background: #f3f0e9; transform: translateX(-1px); }
+
+.page-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.2px;
+}
+
+/* ===================== Sections — separate white cards ===================== */
+.form-section {
+    background: var(--card-bg);
+    border-radius: 14px;
+    border-top: 4px solid var(--accent);
+    box-shadow: 0 1px 2px rgba(20, 20, 30, 0.03), 0 8px 20px rgba(20, 20, 30, 0.05);
+    margin-bottom: 22px;
+    overflow: hidden;
+}
+
+.section-header {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    padding: 24px 28px 4px;
+}
+
+.section-body {
+    padding: 16px 28px 26px;
+}
+
+/* ===================== Form Grid ===================== */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 22px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.required {
+    color: var(--danger);
+    margin-left: 3px;
+}
+
+/* ===================== Inputs — boxed style ===================== */
+.form-field input[type="text"],
+.form-field select,
+.form-field textarea {
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 15px;
+    color: var(--ink);
+    background: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.form-field input[type="text"]::placeholder,
+.form-field textarea::placeholder {
+    color: #9aa2ab;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(226, 160, 63, 0.18);
+}
+
+.form-field textarea {
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* ===================== Checkbox ===================== */
+.checkbox-field {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding-top: 26px;
+}
+
+.checkbox-field input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.checkbox-field label {
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* ===================== Icon-paired Fields ===================== */
+.field-with-icon {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.field-with-icon input,
+.field-with-icon select {
+    flex: 1;
+    min-width: 0;
+}
+
+.error-field {
+    border-color: var(--danger) !important;
+    background: var(--danger-soft) !important;
+}
+
+.add-icon-btn {
+    flex-shrink: 0;
+    min-width: 40px;
+    padding: 0 10px;
+    background: #f7f8f9;
+    color: var(--muted);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.add-icon-btn:hover {
+    color: var(--accent-dark);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* Document Badge — acts as a clickable file picker */
+.capa-doc {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Visually hide the native file input but keep it accessible/clickable
+   via the wrapping <label for="capaDocumentInput"> */
+.capa-doc-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.capa-doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-soft);
+    border: 1px solid #f0dcb2;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--ink);
+    font-weight: 600;
+    transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.capa-doc:hover .capa-doc-badge {
+    border-color: var(--accent);
+    background: #fbeacb;
+}
+
+.capa-doc-input:focus-visible + .capa-doc-badge {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.capa-doc-badge svg {
+    color: var(--accent-dark);
+    flex-shrink: 0;
+}
+
+.capa-doc-text {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ===================== Sticky Action Bar ===================== */
+.form-actions-bar {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    padding: 4px 0 0;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 0;
+}
+
+.btn-save,
+.btn-cancel {
+    border-radius: 10px;
+    padding: 13px 30px;
+    font-weight: 700;
+    font-size: 14.5px;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #e2a03f 0%, #c98a2c 100%);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(201, 138, 44, 0.3);
+}
+.btn-save:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(201, 138, 44, 0.4); }
+.btn-save:active { transform: translateY(0); }
+
+.btn-cancel {
+    background: #ffffff;
+    color: var(--ink);
+    border: 1.5px solid var(--line);
+}
+.btn-cancel:hover { border-color: #b8bfc7; background: #f7f8f9; }
+
+/* ===================== Breakpoints ===================== */
+@media (max-width: 900px) {
+    .new-complaint-page {
+        padding: 18px 16px 32px;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+    }
+    .section-header { padding: 20px 18px 4px; }
+    .section-body { padding: 14px 18px 20px; }
+    .checkbox-field { padding-top: 4px; }
+    .page-title { font-size: 20px; }
+}

@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Complaint Task — clean invoice-style table, single white theme,
+   CSS Grid rows (no <table>), refined for a more polished look. */
+
+.complaint-task-page {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: visible;
+    padding: 24px;
+    background: #f7f6f4; /* soft page backdrop so the white card pops */
+}
+.complaint-task-page * { box-sizing: border-box; }
+
+/* ---------- Stat cards ---------- */
+.task-stat-cards-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px; /* room for scrollbar without clipping card shadow */
+}
+.task-stat-card {
+    display: flex; align-items: center; gap: 14px;
+    background: #ffffff;
+    border: 1px solid #e2e4ea;
+    border-left: 5px solid var(--brand, #9E1B32);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    flex: 1 1 0;
+    min-width: 200px; /* below this, cards scroll instead of shrinking further */
+}
+.task-stat-card-icon {
+    width: 46px; height: 46px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+}
+.task-stat-card-value { font-size: 26px; font-weight: 800; line-height: 1.1; color: #211d19; }
+.task-stat-card-label { font-size: 12px; color: var(--muted, #7a7670); font-weight: 600; margin-top: 3px; white-space: nowrap; }
+
+/* Slim scrollbar for the stat row on narrow screens */
+.task-stat-cards-row::-webkit-scrollbar { height: 6px; }
+.task-stat-cards-row::-webkit-scrollbar-track { background: transparent; }
+.task-stat-cards-row::-webkit-scrollbar-thumb { background: #e3ddd3; border-radius: 8px; }
+
+/* Reset link-style buttons (Task Name / Related To) */
+button.cell-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Reset the badge button SEPARATELY — must NOT set background:none here,
+   otherwise it overrides .id-badge's maroon fill below. */
+button.id-badge {
+    border: none;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ---- Card wrapper: solid white background with real elevation ---- */
+.task-table-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--border, #ece7de);
+    box-shadow:
+        0 1px 2px rgba(28, 24, 20, 0.04),
+        0 8px 24px rgba(28, 24, 20, 0.06),
+        0 20px 48px rgba(28, 24, 20, 0.05);
+}
+
+/* ============================================================
+   Grid table — replaces <table>/<tr>/<td> with CSS Grid rows.
+   Single flat white background, elevated with spacing + hover
+   instead of alternating row colour.
+   ============================================================ */
+.grid-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+}
+
+.grid-row {
+    display: grid;
+    align-items: center;
+    column-gap: 32px;
+    padding: 0 28px;
+    background: #ffffff;
+}
+
+.grid-row--head {
+    background: linear-gradient(180deg, #fbfaf8 0%, #f5f2ec 100%);
+    border-bottom: 2px solid var(--brand, #9E1B32);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.grid-row:not(.grid-row--head) {
+    border-bottom: 1px solid #f0ece3;
+    background: #ffffff;
+    position: relative;
+    transition: background-color .18s ease, box-shadow .18s ease, transform .12s ease;
+}
+
+/* Subtle brand-coloured accent bar that appears on hover — this is what
+   gives "life" back to the table without reintroducing row banding */
+.grid-row:not(.grid-row--head)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--brand, #9E1B32);
+    opacity: 0;
+    transition: opacity .18s ease;
+}
+
+.grid-row:not(.grid-row--head):hover {
+    background: #fdfbf8;
+    box-shadow: inset 0 0 0 9999px rgba(158, 27, 50, 0.015);
+}
+.grid-row:not(.grid-row--head):hover::before { opacity: 1; }
+.grid-row:not(.grid-row--head):last-child { border-bottom: none; }
+
+.grid-cell {
+    padding: 22px 0;
+    font-size: 14.5px;
+    color: #2a2622;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.grid-cell--head {
+    padding: 17px 0;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #6b5f52;
+}
+.grid-cell--muted { color: var(--muted, #7a7670); font-size: 13.5px; }
+
+/* Complaint number badge — flat, ALWAYS solid maroon fill regardless of state */
+.id-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #a3203a 0%, #7c1230 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .3px;
+    border-radius: 8px;
+    padding: 9px 15px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(158, 27, 50, 0.25);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.id-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(158, 27, 50, 0.32);
+}
+.id-badge:active,
+.id-badge:focus,
+.id-badge:visited {
+    color: #ffffff !important;
+    outline: none;
+}
+
+.cell-link {
+    color: var(--link, #1a56b0);
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    white-space: normal;
+    line-height: 1.35;
+}
+.cell-link:hover { text-decoration: underline; color: #0d3d82; }
+.cell-link--strong { font-weight: 600; color: #211d19; }
+.cell-link:focus-visible { outline: 2px solid var(--brand, #9E1B32); outline-offset: 2px; }
+
+/* Status pills with a small dot indicator — slightly bolder now */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+.status-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px currentColor;
+    opacity: 0.9;
+}
+.status-amber  { color: var(--amber, #b6791a);  background: var(--amber-bg, #fbf1de); }
+.status-blue   { color: var(--blue, #2159a6);   background: var(--blue-bg, #e9f0fb); }
+.status-purple { color: var(--purple, #6a3fa0); background: var(--purple-bg, #f1e9fb); }
+.status-green  { color: var(--green, #227a45);  background: var(--green-bg, #e9f7ee); }
+
+.empty-row {
+    text-align: center;
+    padding: 30px 14px;
+    color: var(--muted, #7a7670);
+    font-size: 14px;
+    font-weight: 500;
+    background: #ffffff;
+}
+.task-footer { text-align: center; color: var(--muted, #7a7670); font-size: 12px; margin-top: 22px; }
+
+/* Custom slim scrollbar (Webkit browsers) */
+.grid-table::-webkit-scrollbar { height: 8px; }
+.grid-table::-webkit-scrollbar-track { background: #f7f4ef; }
+.grid-table::-webkit-scrollbar-thumb { background: #e3ddd3; border-radius: 8px; }
+.grid-table::-webkit-scrollbar-thumb:hover { background: #d0c9bd; }
+
+/* Print-friendly */
+@media print {
+    .task-table-card { box-shadow: none; border: 1px solid #ccc; }
+    .id-badge { background: #fff !important; color: #000 !important; border: 1px solid #000; }
+    .grid-row:not(.grid-row--head)::before { display: none; }
+}

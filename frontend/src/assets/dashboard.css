@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Complaints page — dedicated stylesheet (separate from dashboard.css so the
+   Dashboard stepper page is unaffected by this redesign). */
+
+.dashboard-page {
+    --brand: #9e1b32;
+    --brand-dark: #7c1230;
+    --brand-tint: #fbeaf0;
+    --cream: #fff59d;
+    --ink: #1c2230;
+    --muted: #667085;
+    --border: #e2e4ea;
+    --bg-page: #f4f5f7;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-page);
+    min-height: 100vh;
+    padding: 18px 24px 40px;
+    box-sizing: border-box;
+    color: var(--ink);
+    font-size: 13px;
+}
+.dashboard-page * { box-sizing: border-box; }
+
+/* ---------- Stat cards ---------- */
+.stat-cards-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 26px;
+}
+.stat-card {
+    display: flex; align-items: center; gap: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 2px rgba(28, 34, 48, 0.05);
+    transition: box-shadow .25s ease, border-color .25s ease;
+    cursor: default;
+}
+.stat-card:hover {
+    box-shadow: 0 10px 24px rgba(28, 34, 48, 0.10);
+}
+.stat-card-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform .25s ease;
+}
+.stat-card:hover .stat-card-icon { transform: scale(1.08) rotate(-2deg); }
+.stat-card-value { font-size: 27px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+.stat-card-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+/* ---------- Add Complaint button ---------- */
+.above-table-row { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+
+.btn-add-complaint {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #ffb648 0%, #f7941d 45%, #f0790f 100%);
+    background-size: 160% 160%;
+    background-position: 0% 50%;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 26px;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+    box-shadow:
+        0 6px 16px rgba(240, 138, 28, 0.35),
+        0 2px 4px rgba(240, 138, 28, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    transition: background-position .5s ease, box-shadow .2s ease;
+}
+.btn-add-complaint:hover {
+    background-position: 100% 50%;
+    box-shadow:
+        0 8px 22px rgba(240, 138, 28, 0.45),
+        0 3px 6px rgba(240, 138, 28, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+/* The "dip" — physical press-down feel on click */
+.btn-add-complaint:active {
+    box-shadow:
+        0 2px 6px rgba(240, 138, 28, 0.35),
+        inset 0 2px 6px rgba(124, 60, 4, 0.35);
+}
+.btn-add-complaint__arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    transition: transform .2s ease;
+}
+.btn-add-complaint:hover .btn-add-complaint__arrow { transform: translateX(3px); }
+
+/* ---------- Toolbar (pagination only) ---------- */
+.grid-toolbar {
+    display: flex; align-items: center; justify-content: flex-end;
+    background: #fff; border: 1px solid var(--border); border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 16px;
+}
+.grid-toolbar--slim { padding: 10px 16px; }
+
+.toolbar-right { display: flex; align-items: center; gap: 8px; }
+.pagination-text { font-size: 12.5px; color: var(--muted); font-weight: 500; margin-right: 4px; }
+
+.icon-btn {
+    width: 32px; height: 32px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 6px; border: 1px solid transparent; cursor: pointer;
+    font-size: 13px;
+    transition: background .15s ease, transform .15s ease;
+}
+.icon-btn:active { transform: scale(0.92); }
+
+.pager-disabled {
+    background: #f1f2f5; color: #b7bcc6; border-color: var(--border);
+    cursor: not-allowed;
+}
+.pager-active {
+    background: var(--brand); color: #fff; border-color: var(--brand);
+}
+.pager-active:hover { background: var(--brand-dark); }
+
+/* ---------- Table ---------- */
+.table-container {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 0 0 10px 10px; overflow-x: auto;
+    box-shadow: 0 1px 2px rgba(28, 34, 48, 0.04);
+}
+.complaint-table { width: 100%; border-collapse: collapse; min-width: 1300px; }
+.complaint-table th, .complaint-table td {
+    padding: 11px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle; white-space: nowrap;
+    font-size: 13px;
+}
+.complaint-table thead tr:first-child th {
+    background: #f8f8fa; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+    border-bottom: 1.5px solid #d5d8e0;
+}
+.search-row td { background: #fff; padding: 8px 10px; }
+.search-row input {
+    width: 100%; border: 1px solid #d7dae1; border-radius: 6px;
+    padding: 6px 9px; font-size: 12.5px; background: #fbfbfc;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.search-row input:focus {
+    outline: none; border-color: var(--brand); background: #fff;
+    box-shadow: 0 0 0 3px rgba(158, 27, 50, 0.10);
+}
+
+.checkbox-col, .icon-col { width: 34px; text-align: center; }
+.row-icon { margin: 0 4px; cursor: pointer; font-size: 14px; transition: transform .15s ease; }
+.row-icon:hover { transform: scale(1.15); }
+
+.complaint-table tbody tr {
+    transition: background .15s ease;
+}
+.complaint-table tbody tr:hover { background: #f9f6f0; }
+
+.link-btn {
+    background: none; border: none; padding: 0; cursor: pointer;
+    font: inherit; font-weight: 600;
+}
+.complaint-name-cell { font-weight: 500; white-space: normal; max-width: 220px; }
+
+.status {
+    display: inline-block; padding: 4px 12px; border-radius: 100px;
+    font-size: 12px; font-weight: 700;
+}
+.status.running { color: #b0670f; background: #fdf2e2; }
+.status.completed { color: #16794a; background: #e8f6ee; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) { .stat-cards-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+    .dashboard-page { padding: 14px 12px 30px; }
+    .stat-cards-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) { .stat-cards-row { grid-template-columns: 1fr; } }

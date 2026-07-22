@@ -1,0 +1,191 @@
+/* ===================== Top Header Bar ===================== */
+
+.topbar {
+    background: linear-gradient(120deg, #8a1933 0%, #9e1f3d 55%, #b3234a 100%);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    position: relative;
+    z-index: 100;
+}
+
+/* ---- Left: Logo ---- */
+.topbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.company-logo {
+    height: 60px;
+    width: auto;
+}
+
+/* ---- Center: Nav Links ---- */
+.topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.topbar-nav-link {
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.2px;
+}
+
+.topbar-nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.topbar-nav-link.active {
+    color: #fff;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---- Right: Icons ---- */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-icon-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.topbar-icon-btn:hover {
+    color: #fff;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: #f5a623;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- Profile dropdown ---- */
+.profile-wrapper {
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    width: 240px;
+    padding: 16px;
+    z-index: 200;
+    animation: fadeSlideIn 0.18s ease forwards;
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-avatar-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: #fce8ee;
+    color: #9e1f3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.profile-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: #222;
+}
+
+.profile-role,
+.profile-title {
+    font-size: 13px;
+    color: #666;
+}
+
+.profile-dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 12px 0;
+}
+
+.profile-dropdown-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-action-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 9px 8px;
+    font-size: 14px;
+    color: #9e1f3d;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+
+.profile-action-btn:hover {
+    background: #fce8ee;
+}
+
+/* ===================== Animations ===================== */
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
