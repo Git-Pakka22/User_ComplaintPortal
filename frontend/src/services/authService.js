@@ -38,6 +38,46 @@ export const authService = {
     }
   },
 
+  async sendOtp(email) {
+    const response = await fetch(`${API_BASE_URL}/forgot-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      const errorMessage =
+        data.errors?.email?.[0] || data.message || "Failed to send OTP";
+      throw new Error(errorMessage);
+    }
+
+    return data;
+  },
+
+  async resetPassword({ email, otp, password, password_confirmation }) {
+    const response = await fetch(`${API_BASE_URL}/reset-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, otp, password, password_confirmation }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      const errorMessage =
+        data.errors?.otp?.[0] ||
+        data.errors?.email?.[0] ||
+        data.errors?.password?.[0] ||
+        data.message ||
+        "Failed to reset password";
+      throw new Error(errorMessage);
+    }
+
+    return data;
+  },
+
   getCurrentUser() {
     const user = localStorage.getItem("auth_user");
     return user ? JSON.parse(user) : null;
